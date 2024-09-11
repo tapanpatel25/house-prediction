@@ -3,38 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House Price Prediction</title>
+    <title>House Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>House Price Prediction</h1>
-    <form action="/" method="post">
-        <label for="num_bedrooms">Number of Bedrooms:</label>
-        <input type="number" name="num_bedrooms" step="any" required><br><br>
-        
-        <label for="num_bathrooms">Number of Bathrooms:</label>
-        <input type="number" name="num_bathrooms" step="any" required><br><br>
-        
-        <label for="square_footage">Square Footage:</label>
-        <input type="number" name="square_footage" step="any" required><br><br>
-        
-        <label for="lot_size">Lot Size:</label>
-        <input type="number" name="lot_size" step="any" required><br><br>
-        
-        <label for="age_of_house">Age of House:</label>
-        <input type="number" name="age_of_house" step="any" required><br><br>
-        
-        <label for="proximity_to_city_center">Proximity to City Center (miles):</label>
-        <input type="number" name="proximity_to_city_center" step="any" required><br><br>
-        
-        <label for="neighborhood_quality">Neighborhood Quality (1-10):</label>
-        <input type="number" name="neighborhood_quality" step="any" required><br><br>
-        
-        <input type="submit" value="Predict">
-    </form>
+    <header>
+        <h1>House Price Predictor</h1>
+        <nav>
+            <a href="#" class="active" onclick="showSection('predictor'); return false;">Predictor</a>
+            <a href="#" onclick="showSection('about'); return false;">About</a>
+        </nav>
+    </header>
 
-    {% if result %}
-        <h2>Prediction Result</h2>
-        <p>The predicted house price is: {{ result }}</p>
-    {% endif %}
+    <main>
+        <section id="predictor" class="active">
+            <h2>Predict House Price</h2>
+            <form method="POST" id="prediction-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="num_bedrooms">Bedrooms</label>
+                        <input type="number" id="num_bedrooms" name="num_bedrooms" min="1" step="1" required value="{{ request.form['num_bedrooms'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="num_bathrooms">Bathrooms</label>
+                        <input type="number" id="num_bathrooms" name="num_bathrooms" min="0.5" step="0.5" required value="{{ request.form['num_bathrooms'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="square_footage">Square Footage</label>
+                        <input type="number" id="square_footage" name="square_footage" min="1" step="1" required value="{{ request.form['square_footage'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="lot_size">Lot Size (sq ft)</label>
+                        <input type="number" id="lot_size" name="lot_size" min="1" step="1" required value="{{ request.form['lot_size'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="age_of_house">House Age (years)</label>
+                        <input type="number" id="age_of_house" name="age_of_house" min="0" step="1" required value="{{ request.form['age_of_house'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="proximity_to_city_center">Distance to City Center (miles)</label>
+                        <input type="number" id="proximity_to_city_center" name="proximity_to_city_center" min="0" step="0.1" required value="{{ request.form['proximity_to_city_center'] }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="neighborhood_quality">Neighborhood Quality (1-10)</label>
+                        <input type="number" id="neighborhood_quality" name="neighborhood_quality" min="1" max="10" step="1" required value="{{ request.form['neighborhood_quality'] }}">
+                    </div>
+                </div>
+                <button type="submit">Predict Price</button>
+            </form>
+            
+            {% if result %}
+            <div class="result">
+                <h3>Predicted House Price:</h3>
+                <p>{{ result }}</p>
+            </div>
+            {% endif %}
+        </section>
+
+        <section id="about" class="hidden">
+            <h2>About This Project</h2>
+            <p>The House Price Predictor is a machine learning project that estimates house prices based on various features. It uses a linear regression model trained on real estate data to make predictions.</p>
+            
+            <h3>How It Works</h3>
+            <p>Our model takes into account several key factors that influence house prices, including the number of bedrooms and bathrooms, square footage, lot size, age of the house, proximity to the city center, and neighborhood quality. By analyzing these features, we can provide an estimated price for a house.</p>
+            
+            <h3>Student Information</h3>
+            <div class="student-info">
+                <p><strong>Name:</strong> Tapan Patel</p>
+                <p><strong>Enrollment No:</strong> 210020107081</p>
+                <p><strong>Internal Guide:</strong> Prof. Preksha Patel</p>
+                <p><strong>External Guide:</strong> Chintan Nagrecha</p>
+                <p><strong>External Guide Email:</strong> info@infolabz.in</p>
+                <p><strong>Company Address:</strong> 405, VRAJ AVENUE, ABOVE SAM'S PIZZA, NR
+                    COMMECE SIX ROAD, NAVRANGPURA,
+                    AHMEDABAD, 380009</p>
+                <p><strong>Company Contact:</strong> 8866662662</p>
+            </div>
+            
+            <h3>Project Documents</h3>
+            <div class="document-links">
+                <a href="https://drive.google.com/file/d/1s4VhyhsuldruA0oHv5vDtHG3zrHHOKyB/view?usp=drive_link" class="btn" target="_blank">Offer Letter</a>
+                <a href="https://drive.google.com/file/d/1Z5qFUgLWIA1y9jiT0rbb6YQ2esubr5TE/view?usp=drive_link" class="btn" target="_blank">Completion Certificate</a>
+                <a href="https://drive.google.com/file/d/1Z5qFUgLWIA1y9jiT0rbb6YQ2esubr5TE/view?usp=drive_link" class="btn" target="_blank">Project Report</a>
+
+            </div>
+
+            <h3>Technologies Used</h3>
+            <ul>
+                <li>Python</li>
+                <li>Flask</li>
+                <li>Scikit-learn</li>
+                <li>Pandas</li>
+                <li>HTML/CSS</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 House Price Predictor. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('main section').forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.getElementById(sectionId).classList.add('active');
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
