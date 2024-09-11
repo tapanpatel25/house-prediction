@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+</head>
+<body>
+    <h1>House Price Prediction</h1>
+    <form action="/" method="post">
+        <label for="num_bedrooms">Number of Bedrooms:</label>
+        <input type="number" name="num_bedrooms" step="any" required><br><br>
+        
+        <label for="num_bathrooms">Number of Bathrooms:</label>
+        <input type="number" name="num_bathrooms" step="any" required><br><br>
+        
+        <label for="square_footage">Square Footage:</label>
+        <input type="number" name="square_footage" step="any" required><br><br>
+        
+        <label for="lot_size">Lot Size:</label>
+        <input type="number" name="lot_size" step="any" required><br><br>
+        
+        <label for="age_of_house">Age of House:</label>
+        <input type="number" name="age_of_house" step="any" required><br><br>
+        
+        <label for="proximity_to_city_center">Proximity to City Center (miles):</label>
+        <input type="number" name="proximity_to_city_center" step="any" required><br><br>
+        
+        <label for="neighborhood_quality">Neighborhood Quality (1-10):</label>
+        <input type="number" name="neighborhood_quality" step="any" required><br><br>
+        
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if result %}
+        <h2>Prediction Result</h2>
+        <p>The predicted house price is: {{ result }}</p>
+    {% endif %}
+</body>
+</html>
