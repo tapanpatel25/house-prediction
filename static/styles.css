@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
+    line-height: 1.3;
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
@@ -21,7 +21,7 @@ body {
 
 header {
     background-color: var(--primary-color);
-    padding: 1rem 0;
+    padding: 0.1rem 0;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -186,12 +186,12 @@ button:hover {
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-footer {
+/* footer {
     text-align: center;
     padding: 1rem 0;
     background-color: var(--primary-color);
     color: var(--card-background);
-}
+} */
 
 @media (max-width: 768px) {
     .form-grid {

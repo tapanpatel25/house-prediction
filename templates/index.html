@@ -23,27 +23,27 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="num_bedrooms">Bedrooms</label>
-                        <input type="number" id="num_bedrooms" name="num_bedrooms" min="1" step="1" required value="{{ request.form['num_bedrooms'] }}">
+                        <input type="number" id="num_bedrooms" name="num_bedrooms" min="1" step="1" max="10"  required value="{{ request.form['num_bedrooms'] }}">
                     </div>
                     <div class="form-group">
                         <label for="num_bathrooms">Bathrooms</label>
-                        <input type="number" id="num_bathrooms" name="num_bathrooms" min="0.5" step="0.5" required value="{{ request.form['num_bathrooms'] }}">
+                        <input type="number" id="num_bathrooms" name="num_bathrooms" min="0.5" step="0.5" max="7" required value="{{ request.form['num_bathrooms'] }}">
                     </div>
                     <div class="form-group">
                         <label for="square_footage">Square Footage</label>
-                        <input type="number" id="square_footage" name="square_footage" min="1" step="1" required value="{{ request.form['square_footage'] }}">
+                        <input type="number" id="square_footage" name="square_footage" min="1" step="1" max="3499" required value="{{ request.form['square_footage'] }}">
                     </div>
                     <div class="form-group">
                         <label for="lot_size">Lot Size (sq ft)</label>
-                        <input type="number" id="lot_size" name="lot_size" min="1" step="1" required value="{{ request.form['lot_size'] }}">
+                        <input type="number" id="lot_size" name="lot_size" min="1" step="1" max="9998" required value="{{ request.form['lot_size'] }}">
                     </div>
                     <div class="form-group">
                         <label for="age_of_house">House Age (years)</label>
-                        <input type="number" id="age_of_house" name="age_of_house" min="0" step="1" required value="{{ request.form['age_of_house'] }}">
+                        <input type="number" id="age_of_house" name="age_of_house" min="0" step="1" max="99" required value="{{ request.form['age_of_house'] }}">
                     </div>
                     <div class="form-group">
                         <label for="proximity_to_city_center">Distance to City Center (miles)</label>
-                        <input type="number" id="proximity_to_city_center" name="proximity_to_city_center" min="0" step="0.1" required value="{{ request.form['proximity_to_city_center'] }}">
+                        <input type="number" id="proximity_to_city_center" name="proximity_to_city_center" min="0" step="0.1"  required value="{{ request.form['proximity_to_city_center'] }}">
                     </div>
                     <div class="form-group">
                         <label for="neighborhood_quality">Neighborhood Quality (1-10)</label>
@@ -100,9 +100,9 @@
         </section>
     </main>
 
-    <footer>
+    <!-- <footer>
         <p>&copy; 2024 House Price Predictor. All rights reserved.</p>
-    </footer>
+    </footer> -->
 
     <script>
         function showSection(sectionId) {
